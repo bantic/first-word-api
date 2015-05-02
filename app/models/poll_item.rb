@@ -10,6 +10,7 @@ class PollItem < ActiveRecord::Base
 
   def add_word word
     normalized_word = self.class.normalize_word(word)
+
     increment_list_item(normalized_word)
     increment_total_word_count
   end

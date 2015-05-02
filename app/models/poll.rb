@@ -4,4 +4,8 @@ class Poll < ActiveRecord::Base
   friendly_id :title, use: :slugged
 
   has_many :poll_items, dependent: :destroy
+
+  def key
+    friendly_id
+  end
 end

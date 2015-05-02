@@ -29,6 +29,7 @@ end
 group :test do
   gem 'fabrication'
   gem 'rspec-rails', '~> 3.0'
-  gem "fakeredis", :require => "fakeredis/rspec"
+  gem 'fakeredis', :require => 'fakeredis/rspec'
+  gem 'faker'
 end
 

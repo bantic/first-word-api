@@ -13,6 +13,10 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'puma'
 
+# https://github.com/activeadmin/activeadmin
+gem 'activeadmin', github: 'activeadmin'
+gem 'devise' # Necessary for activeadmin
+
 # https://github.com/norman/friendly_id
 # Friendly slugs in urls
 gem 'friendly_id', '~> 5.1.0'

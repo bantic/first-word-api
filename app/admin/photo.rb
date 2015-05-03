@@ -13,13 +13,14 @@ ActiveAdmin.register Photo do
 #   permitted
 # end
   permit_params do
-    permitted = [:image]
+    permitted = [:image, :poll_item_id]
     permitted
   end
 
   form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs do
-     f.file_field :image
+      f.input :poll_item
+      f.file_field :image
     end
     f.actions
   end
@@ -31,6 +32,7 @@ ActiveAdmin.register Photo do
     column :thumbnail do |photo|
       photo.image_display ? image_tag(photo.image_display.remote_url) : "no image yet"
     end
+    actions
   end
 
 end

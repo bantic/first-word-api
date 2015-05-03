@@ -3,6 +3,7 @@ class PollItem < ActiveRecord::Base
   friendly_id :title, use: :slugged
 
   belongs_to :poll
+  has_one :photo, dependent: :destroy
 
   def self.normalize_word(word)
     word.split(' ')[0].downcase

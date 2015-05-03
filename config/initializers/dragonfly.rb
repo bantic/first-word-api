@@ -10,12 +10,6 @@ Dragonfly.app.configure do
 
   url_format "/media/:job/:name"
 
-  puts "X"*100
-  puts AWS_BUCKET_NAME.inspect
-  puts AWS_ACCESS_KEY_ID.inspect
-  puts AWS_SECRET_ACCESS_KEY.inspect
-  puts "X"*100
-
   datastore :s3,
     bucket_name: AWS_BUCKET_NAME,
     access_key_id: AWS_ACCESS_KEY_ID,

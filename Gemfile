@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby "2.2.0"
 
+gem 'dotenv-rails', :groups => [:development, :test]
+
 gem 'rails', '4.2.1'
 gem 'pg'
 gem 'redis'
@@ -21,11 +23,17 @@ gem 'devise' # Necessary for activeadmin
 # Friendly slugs in urls
 gem 'friendly_id', '~> 5.1.0'
 
+# http://markevans.github.io/dragonfly/
+gem 'dragonfly'
+# https://github.com/markevans/dragonfly-s3_data_store
+gem 'dragonfly-s3_data_store'
+
 group :production do
   gem 'rails_12factor'
 end
 
 group :development, :test do
+  gem 'foreman'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 

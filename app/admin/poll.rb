@@ -33,16 +33,23 @@ ActiveAdmin.register Poll do
         "None yet"
       else
         content_tag :ul do
-          poll.poll_items.collect do |poll_item|
-            content_tag :li do
-              html = content_tag(:p, poll_item.title)
-              if poll_item.photo
-                html += image_tag poll_item.photo.image_display.remote_url
+          content_tag :li do
+            html = ''
+            poll.poll_items.each do |item|
+              photo = item.photo
+              html += content_tag :p, item.title
+              if photo
+                html += image_tag photo.image_display.remote_url
+              else
+                html += "(No picture)"
               end
             end
-          end.join('')
+            html.html_safe
+          end
         end
       end
     end
+
+    actions
   end
 end

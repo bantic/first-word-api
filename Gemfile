@@ -28,11 +28,17 @@ gem 'dragonfly'
 # https://github.com/markevans/dragonfly-s3_data_store
 gem 'dragonfly-s3_data_store'
 
+# serializer
+gem 'oat'
+
+gem 'rack-cors'
+
 group :production do
   gem 'rails_12factor'
 end
 
 group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
   gem 'foreman'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -45,7 +51,7 @@ end
 
 group :test do
   gem 'fabrication'
-  gem 'rspec-rails', '~> 3.0'
   gem 'fakeredis', :require => 'fakeredis/rspec'
   gem 'faker'
+  gem 'rspec-its'
 end

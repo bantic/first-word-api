@@ -6,7 +6,7 @@ class PollItem < ActiveRecord::Base
   has_one :photo, dependent: :destroy
 
   def self.normalize_word(word)
-    word.split(' ')[0].downcase
+    word.split(' ')[0].downcase.gsub(/[^a-z]+/, '')
   end
 
   def add_word word
@@ -41,11 +41,11 @@ class PollItem < ActiveRecord::Base
   end
 
   def word_list_key
-    poll.key
+    "#{friendly_id}-word-list"
   end
 
   def word_count_key
-    friendly_id
+    "#{friendly_id}-word-count"
   end
 
   def redis

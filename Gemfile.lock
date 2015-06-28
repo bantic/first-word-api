@@ -225,6 +225,8 @@ GEM
     jquery-ui-rails (5.0.3)
       railties (>= 3.2.16)
     json (1.8.2)
+    jsonapi-serializers (0.2.3)
+      activesupport
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -241,8 +243,6 @@ GEM
     net-ssh (2.9.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
-    oat (0.4.6)
-      activesupport
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyamorous (1.2.0)
@@ -360,7 +360,7 @@ DEPENDENCIES
   friendly_id (~> 5.1.0)
   jbuilder (~> 2.0)
   jquery-rails
-  oat
+  jsonapi-serializers
   pg
   puma
   rack-cors

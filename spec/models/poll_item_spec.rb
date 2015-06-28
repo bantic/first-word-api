@@ -22,6 +22,9 @@ RSpec.describe PollItem, :type => :model do
 
   context 'adding a word' do
     let(:poll_item) { Fabricate :poll_item }
+    let(:poll) { poll_item.poll }
+    let(:other_poll_item) { Fabricate :poll_item, poll:poll }
+    let(:word) { Faker::Lorem.word }
 
     it 'returns a desc-sorted list' do
       word1 = PollItem.normalize_word('Abc')
@@ -44,9 +47,15 @@ RSpec.describe PollItem, :type => :model do
       expect(poll_item.sorted_words).to eq([[normalized_word1, 1]])
     end
 
-    it 'increments total word count' do
-      word = Faker::Lorem.word
+    it 'normalizes non-alpha chars' do
+      # remove punctuation
+      expect(PollItem.normalize_word('abc!')).to eq('abc')
 
+      # remove numbers
+      expect(PollItem.normalize_word('abc123')).to eq('abc')
+    end
+
+    it 'increments total word count' do
       # precond
       expect(poll_item.word_count).to eq(0)
 
@@ -55,6 +64,22 @@ RSpec.describe PollItem, :type => :model do
 
       poll_item.add_word word
       expect(poll_item.word_count).to eq(2)
+    end
+
+    it 'tracks words by poll item' do
+      expect(poll_item.word_count).to eq(0)
+      expect(poll_item.sorted_words.length).to eq(0)
+
+      expect(other_poll_item.word_count).to eq(0)
+      expect(other_poll_item.sorted_words.length).to eq(0)
+
+      poll_item.add_word word
+
+      expect(poll_item.word_count).to eq(1)
+      expect(poll_item.sorted_words.length).to eq(1)
+
+      expect(other_poll_item.word_count).to eq(0)
+      expect(other_poll_item.sorted_words.length).to eq(0)
     end
   end
 end

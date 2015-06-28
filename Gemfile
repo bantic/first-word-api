@@ -29,7 +29,8 @@ gem 'dragonfly'
 gem 'dragonfly-s3_data_store'
 
 # serializer
-gem 'oat'
+# https://github.com/fotinakis/jsonapi-serializers
+gem 'jsonapi-serializers'
 
 gem 'rack-cors'
 

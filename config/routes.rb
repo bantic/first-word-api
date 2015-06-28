@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   namespace 'api' do
     resources :polls
+    resources :input_words, path: 'input-words'
+    resources :poll_items, path: 'poll-items'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

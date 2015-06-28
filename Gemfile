@@ -34,6 +34,8 @@ gem 'jsonapi-serializers'
 
 gem 'rack-cors'
 
+gem 'rollbar', '~> 1.2.7'
+
 group :production do
   gem 'rails_12factor'
 end

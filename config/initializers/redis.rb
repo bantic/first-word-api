@@ -1,10 +1,10 @@
+require 'redis-namespace'
+redis_ns = "first-word-redis-#{Rails.env}"
+
 if ENV["REDISCLOUD_URL"]
-  Rails.logger.info "Connecting to redis at #{ENV['REDISCLOUD_URL']}" * 10
   redis_conn = Redis.new(:url => ENV["REDISCLOUD_URL"])
+  $redis = Redis::Namespace.new(ns: redis_ns, :redis => redis_conn)
 else
-  redis_conn = Redis.new
+  $redis = Redis::Namespace.new(ns: redis_ns)
 end
 
-ns = "first-word-redis-#{Rails.env}"
-
-$redis = Redis::Namespace.new(ns: ns, redis: redis_conn);

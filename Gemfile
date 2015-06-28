@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 ruby "2.2.0"
 
-gem 'dotenv-rails', :groups => [:development, :test]
-
 gem 'rails', '4.2.1'
 gem 'pg'
 gem 'redis'
@@ -41,6 +39,7 @@ group :production do
 end
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'foreman'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
